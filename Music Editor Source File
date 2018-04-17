@@ -171,7 +171,7 @@ void Timer2AIntHandler(void)
         if(PITCH001_H[i+1]!=0)
         {
             PWMGenPeriodSet(PWM1_BASE, PWM_GEN_2, PWM_BEEP_CLOCK/PITCH001_H[i+1]);//Numb=system clock/PWM frequency
-            PWMPulseWidthSet(PWM1_BASE, PWM_OUT_5, (PWM_BEEP_CLOCK/PITCH001_H[i+1])*INTENSITY001_H[i+1]/100);//number=Numb*%x
+            PWMPulseWidthSet(PWM1_BASE, PWM_OUT_5, (PWM_BEEP_CLOCK/PITCH001_H[i+1])*(100-INTENSITY001_H[i+1])/100);//number=Numb*%x
             i++;
         }
         else
@@ -185,8 +185,8 @@ void Timer2AIntHandler(void)
          {
             L_COUNT=1;
             PWMGenPeriodSet(PWM1_BASE, PWM_GEN_3, PWM_BEEP_CLOCK/PITCH001_L[j+1]);//Numb=system clock/PWM frequency
-            PWMPulseWidthSet(PWM1_BASE, PWM_OUT_7, (PWM_BEEP_CLOCK/PITCH001_L[j+1])*INTENSITY001_L[j+1]/100);//number=Numb*%x
-        j++;
+            PWMPulseWidthSet(PWM1_BASE, PWM_OUT_7, (PWM_BEEP_CLOCK/PITCH001_L[j+1])*(100-INTENSITY001_L[j+1])/100);//number=Numb*%x
+            j++;
          }
         else
         {
